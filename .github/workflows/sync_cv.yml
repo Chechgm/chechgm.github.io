@@ -23,6 +23,7 @@ jobs:
         with:
           root_file: industry_science_cv.tex
           working_directory: overleaf_temp
+          latexmk_use_xelatex: true
       
       - name: Move PDF and Cleanup
         run: |
