@@ -23,7 +23,8 @@ jobs:
         with:
           root_file: industry_science_cv.tex
           working_directory: overleaf_temp
-          latexmk_use_xelatex: true
+          compiler: latexmk
+          args: "-xelatex -file-line-error -interaction=nonstopmode"   
       
       - name: Move PDF and Cleanup
         run: |
