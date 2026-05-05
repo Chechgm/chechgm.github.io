@@ -18,13 +18,10 @@ jobs:
           # Clones to a temp folder so source files aren't tracked
           git clone https://git:${{ secrets.OVERLEAF_TOKEN }}@git.overleaf.com/${{ secrets.OVERLEAF_PROJECT_ID }} overleaf_temp
       
-      - name: List Files for Debugging
-        run: ls -R overleaf_temp
-  
       - name: Compile LaTeX
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: overleaf_temp/industry_science_cv.tex
+          root_file: industry_science_cv.tex
           working_directory: overleaf_temp
       
       - name: Move PDF and Cleanup
