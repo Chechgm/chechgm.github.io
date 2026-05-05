@@ -16,7 +16,7 @@ jobs:
       - name: Clone Overleaf Project
         run: |
           # Clones to a temp folder so source files aren't tracked
-          git clone https://${{ secrets.OVERLEAF_EMAIL }}:${{ secrets.OVERLEAF_TOKEN }}@git.github.com/${{ secrets.OVERLEAF_PROJECT_ID }} overleaf_temp
+          git clone https://${{ secrets.OVERLEAF_EMAIL }}:${{ secrets.OVERLEAF_TOKEN }}@git.overleaf.com/${{ secrets.OVERLEAF_PROJECT_ID }} overleaf_temp
         
       - name: Compile LaTeX
         uses: xu-cheng/latex-action@v3
