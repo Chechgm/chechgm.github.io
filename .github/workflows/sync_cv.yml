@@ -24,7 +24,7 @@ jobs:
 
       - name: Move PDF and Cleanup
         run: |
-	  mkdir -p assets
+          mkdir -p assets
           cp overleaf_temp/industry_science_cv.pdf ./assets/cv.pdf
           rm -rf overleaf_temp
 
