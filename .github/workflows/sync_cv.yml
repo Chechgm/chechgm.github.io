@@ -7,6 +7,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout Website Repo
         uses: actions/checkout@v4
@@ -21,6 +23,24 @@ jobs:
         with:
           root_file: overleaf_temp/industry_science_cv.tex
           working_directory: overleaf_temp
+      
+      - name: Debug and Move
+        run: |
+          mkdir -p assets
+          echo "Listing all files found in the Overleaf clone:"
+          find overleaf_temp -maxdepth 2
+          
+          echo "Searching for any PDF created..."
+          # This finds the PDF regardless of its name and moves it
+          find overleaf_temp -name "*.pdf" -exec cp {} ./assets/cv.pdf \;
+          
+          if [ -f "./assets/cv.pdf" ]; then
+            echo "Success: cv.pdf is now in the assets folder."
+          else
+            echo "Error: No PDF was found or copied!"
+            exit 1
+          fi
+          rm -rf overleaf_temp
 
       - name: Move PDF and Cleanup
         run: |
